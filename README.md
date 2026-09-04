@@ -14,21 +14,47 @@ There are numerous bugs and half working implementations. Pull requests are grea
 
 Packages are available for Windows, Linux, and MacOS.
 
+Below are the supported distribution mechanisms. There may be other ways to download/install the application, but this project will likely not be able to offer any support for those since they are made available by other individuals.
+
+## Windows
 Windows packages are available as an installer or a stand-alone zip file on the [release](https://github.com/dail8859/NotepadNext/releases) page. The installer provides additional components such as an auto-updater and Windows context menu integration. You can easily install it with Winget:
 
 ```powershell
 winget install dail8859.NotepadNext
 ```
 
+## Linux
 Linux packages can be obtained by downloading the stand-alone AppImage on the [release](https://github.com/dail8859/NotepadNext/releases) page or by installing the [flatpak](https://flathub.org/apps/details/com.github.dail8859.NotepadNext) by executing:
 
 ```bash
 flatpak install flathub com.github.dail8859.NotepadNext
 ```
 
+If you are using Ubuntu and prefer an up-to-date deb version, you can use the [PPA supporting Ubuntu 22.04 and newer](https://launchpad.net/~quentiumyt/+archive/ubuntu/notepadnext) provided by
+[Quentin Lienhardt](https://github.com/QuentiumYT). You can add it by executing:
+
+```bash
+sudo add-apt-repository ppa:quentiumyt/notepadnext
+sudo apt update
+sudo apt install notepadnext
+```
+
+## MacOS
 MacOS disk images can be downloaded from the [release](https://github.com/dail8859/NotepadNext/releases) page.
 
-## MacOS Tweaks
+It can also be installed using brew:
+```bash
+brew tap dail8859/notepadnext
+brew install notepadnext
+```
+
+If you receive warnings that Notepad Next is "damaged", this is an Apple complaining that I have not paid them money to "trust" me. You can bypass this by running:
+
+```bash
+xattr -d com.apple.quarantine /Applications/NotepadNext.app
+```
+
+#### MacOS Tweaks
 
 By default, MacOS enables font smoothing which causes text to appear quite differently from the Windows version. This can be disabled system-wide using the following command:
 
@@ -38,10 +64,13 @@ defaults -currentHost write -g AppleFontSmoothing -int 0
 
 A restart is required for this to take effect.
 
-# Development
-Current development is done using QtCreator with the Microsft Visual C++ (msvc) compiler. Qt 6.5 is the prefered Qt version but this can also be built with Qt 5.15. This is also known to build successfully on various Linux distributions and macOS. Other platforms/compilers should be usable with minor modifications.
+# Translations
+Translations are contributed by the community. All translations are managed using Crowdin at `https://crowdin.com/project/notepadnext`. If there is a language missing you would like to contribute, feel free to start a discussion on Crowdin.
 
-If you are familiar with building C++ Qt desktop applications with Qt Creator, then this should be as simple as opening `src/NotepadNext.pro` and build/run the project.
+# Development
+Current development is done using QtCreator with the Microsoft Visual C++ (msvc) compiler. Qt 6.5 is the currently supported Qt version. Older versions of Qt are likely to work but are not tested. Any fixes for older versions will be accepted as long as they do not introduce complex fixes. This application is also known to build successfully on various Linux distributions and macOS. Other platforms/compilers should be usable with minor modifications.
+
+If you are familiar with building C++ Qt desktop applications with Qt Creator, then this should be as simple as opening `CMakeLists` and build/run the project.
 
 If you are new to building C++ Qt desktop applications, there is a more detailed guide [here](/doc/Building.md).
 

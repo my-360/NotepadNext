@@ -44,9 +44,30 @@ target_wrapper.*
 
 # QtCtreator CMake
 CMakeLists.txt.user*
+CMakeCache.
+cmake_install.cmake
+Makefile
+__cmake_systeminformation
 
 *.pyc
 
 /build
+/build*
 /icon/*.png
 /icon/ImageMagick
+
+# JetBrains IDE prefs
+.idea/
+
+# macOS annoyances
+.DS_Store
+*DS_Store
+._*
+
+.cpm-cache/
+
+# ninja
+.ninja_deps
+.ninja_lock
+.ninja_log
+build.ninja
